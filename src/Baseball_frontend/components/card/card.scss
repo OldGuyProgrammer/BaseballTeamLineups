@@ -1,0 +1,24 @@
+/*
+Baseball Roster and Team Organizer
+
+Player list styles
+
+Old Guy Programmer
+2025
+*/
+
+@import "../../src/globals.scss";
+
+.card-container {
+  display: inline-block;
+  background-color: $card-background-color;
+  color: $card-text-color;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 25px;
+  margin: 10px;
+  border-radius: 10%;
+  font-family: Bosox-full;
+  font-size: 30px;
+  justify-content: center;
+}

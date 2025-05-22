@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "Baseball_backend": {
+      "main": "src/Baseball_backend/main.mo",
+      "type": "motoko"
+    },
+    "Baseball_frontend": {
+      "dependencies": [
+        "Baseball_backend"
+      ],
+      "source": [
+        "src/Baseball_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "Baseball_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

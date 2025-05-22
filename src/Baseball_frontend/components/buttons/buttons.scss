@@ -1,0 +1,25 @@
+/*
+Baseball Roster and Team Organizer
+
+Button Styles
+
+Old Guy Programmer
+2025
+*/
+
+@import "../../src/globals.scss";
+
+button {
+  display: inline-block;
+  color: white;
+  background-color: rgb(51, 50, 50);
+  padding: 10px;
+  margin: 10px;
+  width: 125px;
+  height: 125px;
+  border-radius: 10%;
+  font-family: Bosox-full;
+  font-size: 30px;
+  cursor: pointer;
+  justify-content: center;
+}

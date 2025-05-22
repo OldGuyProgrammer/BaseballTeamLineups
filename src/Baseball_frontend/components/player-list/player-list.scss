@@ -1,0 +1,18 @@
+/*
+Baseball Roster and Team Organizer
+
+Player list styles
+
+Old Guy Programmer
+2025
+*/
+
+@import "../../src/globals.scss";
+
+.player-list {
+  display: inline-block;
+  color: $text-color;
+  font-family: Bosox-full;
+  font-size: 30px;
+  justify-content: center;
+}

@@ -1,0 +1,24 @@
+/*
+Baseball Roster and Team Organizer
+
+Menubar styling
+
+Old Guy Programmer
+2025
+*/
+
+@import "../../src/globals.scss";
+
+.menubar {
+  display: block;
+  float: left;
+  padding: 10px 10px;
+  background-color: lightgray;
+  font-family: Bosox-full;
+  font-size: 2rem;
+  a {
+    color: $text-color;
+    text-decoration: none;
+    padding: 20px;
+  }
+}

@@ -10,14 +10,20 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Home from "../components/home/home";
 import About from "../components/about/about";
+import PlayerList from "../components/player-list/player-list";
+import Ping from "../components/ping/ping";
 
 export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route index path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route index path="/" element={<Home />} />
+          <Route index path="/players" element={<PlayerList />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/ping" element={<Ping />} />
+        </Routes>
+      </Router>
+    </>
   );
 }

@@ -10,7 +10,6 @@
 import { useState } from "react";
 import { Baseball_backend } from "declarations/Baseball_backend";
 import Button from "../buttons/buttons";
-import PlayerList from "../player-list/player-list";
 import Title from "../title/title";
 import { Link } from "react-router-dom";
 
@@ -31,7 +30,9 @@ export default function Home() {
     <main>
       <Title />
       <div>
-        <Button label="Players" />
+        <Link to="/Players">
+          <Button label="Players" />
+        </Link>
         <Button label="Teams" />
         <Button label="Leagues" />
         <Button label="Games" />
@@ -40,7 +41,6 @@ export default function Home() {
           <Button label="About" />
         </Link>
       </div>
-      <PlayerList />
     </main>
   );
 }

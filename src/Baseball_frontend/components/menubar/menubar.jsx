@@ -7,16 +7,15 @@
 // 2025// Baseball Roster and Team Organizer
 //
 
-import { Container, Navbar } from "react-bootstrap";
-import Nav from "react-bootstrap/Nav";
+import "./menubar.scss";
 
 export default function MenuBar() {
   return (
-    <Navbar className="navbar navbar-expand-lg bg-body-tertiary">
-      <Nav className="me-auto">
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="about">About</Nav.Link>
-      </Nav>
-    </Navbar>
+    <div className="menubar">
+      <a href="/">Home</a>
+      <a href="/players">Players</a>
+      <a href="/about">About</a>
+      <a href="/ping">Ping Server</a>
+    </div>
   );
 }

@@ -7,9 +7,12 @@
 // Old Guy Programmer
 // 2025
 
-import { useState } from "react";
 import Card from "../card/card";
+
+import { Baseball_backend } from "../../../declarations/Baseball_backend";
+
 import "./player-list.scss";
+import { useEffect, useState } from "react";
 
 export default function PlayerList() {
   const players = [
@@ -20,12 +23,23 @@ export default function PlayerList() {
     { name: "Jim Landis", id: "5" },
   ];
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [playerList, setPlayerList] = useState("");
+
+  useEffect(() => {
+    return async () => {
+      setPlayerList(await Baseball_backend.getPlayers());
+    };
+  }, []);
+
   return (
     <div className="player-list">
-      {players.map((player) => {
-        return <Card player={player} key={player.id} />;
+      <p>{typeof playerList}</p>
+      {playerList.map((data, key) => {
+        return data.name;
       })}
+      {/* {players.map((player) => {
+        return <Card player={player} key={player.id} />;
+      })} */}
     </div>
   );
 }

@@ -15,28 +15,37 @@ import "./player-list.scss";
 import { useEffect, useState } from "react";
 
 export default function PlayerList() {
-  const players = [
-    { name: "Jackie Robinson", id: "1" },
-    { name: "Mickey Mantle", id: "2" },
-    { name: "Earnie Banks", id: "3" },
-    { name: "Louis Aparicio", id: "4" },
-    { name: "Jim Landis", id: "5" },
-  ];
+  // const players = [
+  //   { name: "Jackie Robinson", id: "1" },
+  //   { name: "Mickey Mantle", id: "2" },
+  //   { name: "Earnie Banks", id: "3" },
+  //   { name: "Louis Aparicio", id: "4" },
+  //   { name: "Jim Landis", id: "5" },
+  // ];
 
-  const [playerList, setPlayerList] = useState("");
+  const [playerList, setPlayerList] = useState([]);
 
   useEffect(() => {
     return async () => {
-      setPlayerList(await Baseball_backend.getPlayers());
+      const players = await Baseball_backend.getPlayers();
+      // JSON.parse(players.replace("'", '"'));
+      players.map((player) => {
+        console.log("player list to follow");
+        console.log(player);
+      });
+      setPlayerList(players);
     };
   }, []);
 
   return (
     <div className="player-list">
-      <p>{typeof playerList}</p>
-      {playerList.map((data, key) => {
-        return data.name;
-      })}
+      {playerList.map &&
+        playerList.map((data) => {
+          {
+            console.log(data);
+          }
+          return <h3>Name Goes Here</h3>;
+        })}
       {/* {players.map((player) => {
         return <Card player={player} key={player.id} />;
       })} */}

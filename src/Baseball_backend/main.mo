@@ -1,5 +1,6 @@
 import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
+import Array "mo:base/Array";
 
 actor Baseball {
   Debug.print("Baseball Backend starting");
@@ -15,14 +16,23 @@ actor Baseball {
   let Louis : Player = { name = "Louis Aparicio"; id = 4 };
   let Jim : Player = { name = "Jim Landis"; id = 5 };
 
+  Debug.print("Load players array");
+
+  var playerArray : [Player] = [];
+  playerArray := Array.append(playerArray, [Jackie]);
+  playerArray := Array.append(playerArray, [Mickey]);
+  playerArray := Array.append(playerArray, [Earnie]);
+  playerArray := Array.append(playerArray, [Louis]);
+  playerArray := Array.append(playerArray, [Jim]);
+
   public query func ping() : async Text {
     Debug.print("Baseball backend running.");
     "Baseball backend running";
   };
 
-  public query func getPlayers() : async Text {
+  public query func getPlayers() : async [Player] {
     Debug.print("Get players called");
-    "Get players called";
+    playerArray;
   };
 
   public func savePlayers() : async Player {

@@ -11,11 +11,17 @@ import "./menubar.scss";
 
 export default function MenuBar() {
   return (
-    <div className="menubar">
-      <a href="/">Home</a>
-      <a href="/players">Players</a>
-      <a href="/about">About</a>
-      <a href="/ping">Ping Server</a>
-    </div>
+    <nav className="menubar">
+      <div className="mainDiv">
+        <a href="/">Home</a>
+        <a href="/players">Players</a>
+        <ul className="dropdown">
+          <a>Player List</a>
+          <a href="/addPlayer">Add Player</a>
+        </ul>
+        <a href="/about">About</a>
+        <a href="/ping">Ping Server</a>
+      </div>
+    </nav>
   );
 }

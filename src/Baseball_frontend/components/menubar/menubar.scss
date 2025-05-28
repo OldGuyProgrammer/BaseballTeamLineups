@@ -10,12 +10,14 @@ Old Guy Programmer
 @import "../../src/globals.scss";
 
 .menubar {
-  display: block;
-  float: left;
   padding: 10px 10px;
+  width: 100%;
   background-color: lightgray;
   font-family: Bosox-full;
   font-size: 2rem;
+  .dropdown {
+    background-color: lightblue;
+  }
   a {
     color: $text-color;
     text-decoration: none;

@@ -27,20 +27,18 @@ export default function Home() {
   //
 
   return (
-    <main>
+    <div>
       <Title />
-      <div>
-        <Link to="/Players">
-          <Button label="Players" />
-        </Link>
-        <Button label="Teams" />
-        <Button label="Leagues" />
-        <Button label="Games" />
-        <Button label="Help" />
-        <Link to="/about">
-          <Button label="About" />
-        </Link>
-      </div>
-    </main>
+      <Link to="/Players">
+        <Button label="Players" />
+      </Link>
+      <Button label="Teams" />
+      <Button label="Leagues" />
+      <Button label="Games" />
+      <Button label="Help" />
+      <Link to="/about">
+        <Button label="About" />
+      </Link>
+    </div>
   );
 }

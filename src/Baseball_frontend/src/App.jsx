@@ -12,6 +12,7 @@ import Home from "../components/home/home";
 import About from "../components/about/about";
 import PlayerList from "../components/player-list/player-list";
 import Ping from "../components/ping/ping";
+import AddPlayer from "../components/add-player/add-player";
 
 export default function App() {
   return (
@@ -19,7 +20,8 @@ export default function App() {
       <Router>
         <Routes>
           <Route index path="/" element={<Home />} />
-          <Route index path="/players" element={<PlayerList />} />
+          <Route path="/players" element={<PlayerList />} />
+          <Route path="/addPlayer" element={<AddPlayer />} />
           <Route path="/about" element={<About />} />
           <Route path="/ping" element={<Ping />} />
         </Routes>

@@ -26,3 +26,4 @@ dist/
 
 #ignore all fonts
 fonts/
+.mops

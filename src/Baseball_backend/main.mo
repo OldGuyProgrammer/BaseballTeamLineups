@@ -1,44 +1,50 @@
 import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
 import Array "mo:base/Array";
+import List "mo:base/List";
+import Text "mo:base/Text";
 
 actor Baseball {
   Debug.print("Baseball Backend starting");
 
-  type Player = {
-    name : Text;
-    id : Nat;
+  public type Player = {
+    jerseyNumber : Text;
+    playerName : Text;
+    playerTeam : Text;
+
   };
 
-  let Jackie : Player = { name = "Jackie Robinson"; id = 1 };
-  let Mickey : Player = { name = "Mickey Mantle"; id = 2 };
-  let Earnie : Player = { name = "Earnie Banks"; id = 3 };
-  let Louis : Player = { name = "Louis Aparicio"; id = 4 };
-  let Jim : Player = { name = "Jim Landis"; id = 5 };
+  var playerList : List.List<Player> = List.nil<Player>();
 
-  Debug.print("Load players array");
+  public func savePlayer(name : Text, number : Text, team : Text) {
+    let newPlayer : Player = {
+      playerName = name;
+      jerseyNumber = number;
+      playerTeam = "";
+    };
 
-  var playerArray : [Player] = [];
-  playerArray := Array.append(playerArray, [Jackie]);
-  playerArray := Array.append(playerArray, [Mickey]);
-  playerArray := Array.append(playerArray, [Earnie]);
-  playerArray := Array.append(playerArray, [Louis]);
-  playerArray := Array.append(playerArray, [Jim]);
+    playerList := List.push(newPlayer, playerList);
+    Debug.print(debug_show (playerList));
+  };
+
+  public func loadPLayers() {
+
+    Debug.print("Load players list");
+    savePlayer("Jackie Robinson", "42", "Dodgers");
+    savePlayer("Mickey Mantle", "42", "Yankees");
+    savePlayer("Earnie Banks", "42", "Cubs");
+    savePlayer("Louis Aparicio", "42", "White Sox");
+    savePlayer("Jim Landis", "42", "White Sox");
+  };
 
   public query func ping() : async Text {
     Debug.print("Baseball backend running.");
     "Baseball backend running";
   };
 
-  public query func getPlayers() : async [Player] {
+  public query func getPlayers() : async Text {
     Debug.print("Get players called");
-    playerArray;
+    "Get players called";
   };
 
-  public func savePlayers() : async Player {
-    Debug.print("Enter savePLayers");
-
-    Jackie;
-
-  };
 };

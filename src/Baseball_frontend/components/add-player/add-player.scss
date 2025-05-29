@@ -1,0 +1,25 @@
+/*
+Baseball Roster and Team Organizer
+
+Input Form Styles
+
+Old Guy Programmer
+2025
+*/
+
+@import "../../src/globals.scss";
+
+form {
+  display: grid;
+  font-family: Bosox-full;
+  h3 {
+    font-size: 4rem;
+  }
+  label {
+    font-size: 3rem;
+  }
+  input {
+    height: 50px;
+    width: 300px;
+  }
+}

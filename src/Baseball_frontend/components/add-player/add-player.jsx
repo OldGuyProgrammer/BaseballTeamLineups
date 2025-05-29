@@ -8,6 +8,7 @@
 //
 
 import { useState } from "react";
+import "./add-player.scss";
 
 import { Baseball_backend } from "../../../declarations/Baseball_backend";
 
@@ -31,38 +32,40 @@ export default function AddPlayer() {
   }
 
   function handleClick() {
-    console.log("I've been clicked");
-    console.log(playerName + ", " + currentTeam);
     Baseball_backend.savePlayer(playerName, jerseyNumber, currentTeam);
   }
 
   return (
     <>
-      <h3>Add a new player</h3>
-      <input
-        onChange={handleChange}
-        type="text"
-        placeholder="Baseball Player"
-        value={playerName}
-        name="playerName"
-      />
-      <input
-        onChange={handleChange}
-        type="text"
-        placeholder="Team name"
-        value={currentTeam}
-        name="curretTeam"
-      />
-      <input
-        onChange={handleChange}
-        type="text"
-        placeholder="Jersey Number"
-        value={jerseyNumber}
-        name="jerseyNumber"
-      />
-      <button type="submit" onClick={handleClick}>
-        Add Player
-      </button>
+      <form>
+        <h3>Add a New Player</h3>
+        <label htmlFor="playerName">Player Name</label>
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Baseball Player"
+          value={playerName}
+          name="playerName"
+          id="playerName"
+        />
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Team name"
+          value={currentTeam}
+          name="curretTeam"
+        />
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Jersey Number"
+          value={jerseyNumber}
+          name="jerseyNumber"
+        />
+        <button type="submit" onClick={handleClick}>
+          Add Player
+        </button>
+      </form>
     </>
   );
 }

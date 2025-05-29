@@ -16,7 +16,7 @@ export default function Card({ player }) {
       {console.log(player)}
       <h3>{playerName}</h3>
       <p>{jerseyNumber}</p>
-      <P>{playerTeam}</P>
+      <p>{playerTeam}</p>
     </div>
   );
 }

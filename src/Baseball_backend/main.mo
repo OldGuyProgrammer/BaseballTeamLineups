@@ -18,7 +18,7 @@ actor Baseball {
     let newPlayer : Player = {
       playerName = name;
       jerseyNumber = number;
-      playerTeam = "";
+      playerTeam = team;
     };
 
     playerList := List.push(newPlayer, playerList);

@@ -17,29 +17,21 @@ import { useEffect, useState } from "react";
 export default function PlayerList() {
   const [playerList, setPlayerList] = useState([]);
 
+  async function fetchPLayers() {
+    const players = await Baseball_backend.getPlayers();
+    setPlayerList(players);
+    console.log(players);
+  }
+
   useEffect(() => {
-    return async () => {
-      const players = await Baseball_backend.getPlayers();
-      players.map((player) => {
-        console.log("player list to follow");
-        console.log(player);
-      });
-      setPlayerList(players);
-    };
+    fetchPLayers();
   }, []);
 
   return (
     <div className="player-list">
-      {playerList.map &&
-        playerList.map((data) => {
-          {
-            console.log(data);
-          }
-          return <h3>Name Goes Here</h3>;
-        })}
-      {/* {players.map((player) => {
-        return <Card player={player} key={player.id} />;
-      })} */}
+      {playerList.map((player) => {
+        return <Card player={player} key={player.jerseyNumber} />;
+      })}
     </div>
   );
 }

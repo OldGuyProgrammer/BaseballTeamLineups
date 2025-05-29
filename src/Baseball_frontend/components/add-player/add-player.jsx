@@ -9,14 +9,14 @@
 
 import { useState } from "react";
 
+import { Baseball_backend } from "../../../declarations/Baseball_backend";
+
 export default function AddPlayer() {
   const [playerName, setPlayerName] = useState("");
   const [currentTeam, setCurrentTeam] = useState("");
   const [jerseyNumber, setJerseyNumber] = useState("");
 
   function handleChange(event) {
-    console.log(event.target.value);
-    console.log(event.target.name);
     switch (event.target.name) {
       case "playerName":
         setPlayerName(event.target.value);
@@ -28,6 +28,12 @@ export default function AddPlayer() {
         setJerseyNumber(event.target.value);
         break;
     }
+  }
+
+  function handleClick() {
+    console.log("I've been clicked");
+    console.log(playerName + ", " + currentTeam);
+    Baseball_backend.savePlayer(playerName, jerseyNumber, currentTeam);
   }
 
   return (
@@ -54,6 +60,9 @@ export default function AddPlayer() {
         value={jerseyNumber}
         name="jerseyNumber"
       />
+      <button type="submit" onClick={handleClick}>
+        Add Player
+      </button>
     </>
   );
 }

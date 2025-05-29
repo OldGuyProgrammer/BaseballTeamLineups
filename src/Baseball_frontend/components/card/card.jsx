@@ -10,10 +10,11 @@
 import "./card.scss";
 
 export default function Card({ player }) {
-  const { name } = player;
+  const { playerName, jerseyNumber, playerTeam } = player;
   return (
     <div className="card-container">
-      <h3>{name}</h3>
+      {console.log(player)}
+      <h3>{playerName}</h3>
     </div>
   );
 }

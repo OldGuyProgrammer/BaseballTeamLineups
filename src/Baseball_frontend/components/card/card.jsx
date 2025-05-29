@@ -15,6 +15,8 @@ export default function Card({ player }) {
     <div className="card-container">
       {console.log(player)}
       <h3>{playerName}</h3>
+      <p>{jerseyNumber}</p>
+      <P>{playerTeam}</P>
     </div>
   );
 }

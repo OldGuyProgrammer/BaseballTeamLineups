@@ -9,7 +9,7 @@ Old Guy Programmer
 
 @import "../../src/globals.scss";
 
-button {
+.button {
   display: inline-block;
   color: white;
   background-color: rgb(51, 50, 50);
@@ -19,7 +19,7 @@ button {
   height: 125px;
   border-radius: 10%;
   font-family: Bosox-full;
-  font-size: 30px;
+  font-size: 3rem;
   cursor: pointer;
   justify-content: center;
 }

@@ -14,6 +14,8 @@ import PlayerList from "../components/player-list/player-list";
 import Ping from "../components/ping/ping";
 import AddPlayer from "../components/add-player/add-player";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export default function App() {
   return (
     <>

@@ -12,5 +12,5 @@ import PlayerList from "../player-list/player-list";
 import "./buttons.scss";
 
 export default function Button({ label }) {
-  return <button className="button-class">{label}</button>;
+  return <button className="button">{label}</button>;
 }

@@ -12,7 +12,7 @@ actor Baseball {
 
   };
 
-  var playerList : List.List<Player> = List.nil<Player>();
+  stable var playerList : List.List<Player> = List.nil<Player>();
 
   public func savePlayer(name : Text, number : Text, team : Text) {
     let newPlayer : Player = {

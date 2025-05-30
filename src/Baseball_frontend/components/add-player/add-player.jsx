@@ -11,6 +11,7 @@ import { useState } from "react";
 import "./add-player.scss";
 
 import { Baseball_backend } from "../../../declarations/Baseball_backend";
+import { FormLabel, Button } from "react-bootstrap";
 
 export default function AddPlayer() {
   const [playerName, setPlayerName] = useState("");
@@ -39,22 +40,24 @@ export default function AddPlayer() {
     <>
       <form>
         <h3>Add a New Player</h3>
-        <label htmlFor="playerName">Player Name</label>
+        <FormLabel htmlFor="playerName">Player Name</FormLabel>
         <input
           onChange={handleChange}
           type="text"
-          placeholder="Baseball Player"
+          placeholder="Player Name"
           value={playerName}
           name="playerName"
           id="playerName"
         />
+        <FormLabel htmlFor="curretTeam">Team</FormLabel>
         <input
           onChange={handleChange}
           type="text"
-          placeholder="Team name"
+          placeholder="Team"
           value={currentTeam}
           name="curretTeam"
         />
+        <FormLabel htmlFor="jerseyNumber">Jersey Number</FormLabel>
         <input
           onChange={handleChange}
           type="text"
@@ -62,9 +65,9 @@ export default function AddPlayer() {
           value={jerseyNumber}
           name="jerseyNumber"
         />
-        <button type="submit" onClick={handleClick}>
+        <Button variant="primary" size="lg" onClick={handleClick}>
           Add Player
-        </button>
+        </Button>
       </form>
     </>
   );

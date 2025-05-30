@@ -10,9 +10,6 @@ Old Guy Programmer
 @import "../../src/globals.scss";
 
 .player-list {
-  display: inline-block;
-  color: $text-color;
-  font-family: Bosox-full;
-  font-size: 30px;
-  justify-content: center;
+  display: flex;
+  justify-content: flex-start;
 }

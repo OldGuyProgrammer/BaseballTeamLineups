@@ -14,9 +14,9 @@ export default function Card({ player }) {
   return (
     <div className="card-container">
       {console.log(player)}
-      <h3>{playerName}</h3>
-      <p>{jerseyNumber}</p>
-      <p>{playerTeam}</p>
+      <h2>{playerName}</h2>
+      <h3>{playerTeam}</h3>
+      <h3>{jerseyNumber}</h3>
     </div>
   );
 }

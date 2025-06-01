@@ -22,6 +22,7 @@ export default function MenuBar() {
           </NavDropdown>
           <Nav.Link href="/about">About</Nav.Link>
           <Nav.Link href="/ping">Ping-Server</Nav.Link>
+          <Nav.Link href="/loadplayers">Load-Players</Nav.Link>
         </Nav>
       </Navbar>
     </>

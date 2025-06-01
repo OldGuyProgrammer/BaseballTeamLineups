@@ -20,7 +20,6 @@ export default function PlayerList() {
   async function fetchPLayers() {
     const players = await Baseball_backend.getPlayers();
     setPlayerList(players);
-    console.log(players);
   }
 
   useEffect(() => {

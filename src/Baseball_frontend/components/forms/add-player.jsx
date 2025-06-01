@@ -8,10 +8,11 @@
 //
 
 import { useState } from "react";
-import "./add-player.scss";
+import "./forms.scss";
 
 import { Baseball_backend } from "../../../declarations/Baseball_backend";
-import { FormLabel, Button } from "react-bootstrap";
+import { FormLabel } from "react-bootstrap";
+import SubmitButton from "../buttons/buttons";
 
 export default function AddPlayer() {
   const [playerName, setPlayerName] = useState("");
@@ -65,9 +66,7 @@ export default function AddPlayer() {
           value={jerseyNumber}
           name="jerseyNumber"
         />
-        <Button variant="primary" size="lg" onClick={handleClick}>
-          Add Player
-        </Button>
+        <SubmitButton label={"Add Player"} handler={handleClick} />
       </form>
     </>
   );

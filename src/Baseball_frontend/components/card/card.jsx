@@ -9,11 +9,10 @@
 
 import "./card.scss";
 
-export default function Card({ player }) {
-  const { playerName, jerseyNumber, playerTeam } = player;
+export default function Card({ player: props }) {
+  const { playerName, jerseyNumber, playerTeam } = props;
   return (
     <div className="card-container">
-      {console.log(player)}
       <h2>{playerName}</h2>
       <h3>{playerTeam}</h3>
       <h3>{jerseyNumber}</h3>

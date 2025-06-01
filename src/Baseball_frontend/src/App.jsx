@@ -12,9 +12,10 @@ import Home from "../components/home/home";
 import About from "../components/about/about";
 import PlayerList from "../components/player-list/player-list";
 import Ping from "../components/ping/ping";
-import AddPlayer from "../components/add-player/add-player";
+import AddPlayer from "../components/forms/add-player";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import LoadPlayers from "../components/forms/load-players";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/addPlayer" element={<AddPlayer />} />
           <Route path="/about" element={<About />} />
           <Route path="/ping" element={<Ping />} />
+          <Route path="/loadplayers" element={<LoadPlayers />} />
         </Routes>
       </Router>
     </>

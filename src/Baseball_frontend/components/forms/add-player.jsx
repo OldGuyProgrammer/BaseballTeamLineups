@@ -35,6 +35,9 @@ export default function AddPlayer() {
 
   function handleClick() {
     Baseball_backend.savePlayer(playerName, jerseyNumber, currentTeam);
+    setPlayerName("");
+    setCurrentTeam("");
+    setJerseyNumber("");
   }
 
   return (

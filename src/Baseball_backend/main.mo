@@ -40,6 +40,12 @@ actor Baseball {
     "Baseball backend running";
   };
 
+  public query func filterPlayers(name : Text, number : Text, team : Text) : async [Player] {
+    let filteredPlayers = List.filter<Player>(playerList, func p { Text.equal(p.jerseyNumber, number) });
+
+    return List.toArray(filteredPlayers);
+  };
+
   public query func getPlayers() : async [Player] {
     Debug.print("Get players called");
     List.toArray(playerList);

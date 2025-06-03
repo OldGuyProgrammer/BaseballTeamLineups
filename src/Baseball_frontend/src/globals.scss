@@ -39,7 +39,7 @@ $card-background-color: rgb(51, 50, 50);
 }
 
 .limit-min {
-  @include responsive-font(3vw, 20px);
+  @include responsive-font(7.5vw, 20px);
 }
 
 .limit-min-max {

@@ -9,9 +9,10 @@
 
 import { useState } from "react";
 import { Baseball_backend } from "declarations/Baseball_backend";
-import Button from "../buttons/buttons";
+import { NavButton } from "../buttons/buttons";
 import Title from "../title/title";
 import { Link } from "react-router-dom";
+import "./home.scss";
 
 export default function Home() {
   const [greeting, setGreeting] = useState("");
@@ -27,18 +28,18 @@ export default function Home() {
   //
 
   return (
-    <div>
-      <Title />
+    <>
+      <Title title="Baseball Team Lineups" />
       <Link to="/Players">
-        <Button label="Players" />
+        <NavButton label="Players" />
       </Link>
-      <Button label="Teams" />
-      <Button label="Leagues" />
-      <Button label="Games" />
-      <Button label="Help" />
+      <NavButton label="Teams" />
+      <NavButton label="Leagues" />
+      <NavButton label="Games" />
+      <NavButton label="Help" />
       <Link to="/about">
-        <Button label="About" />
+        <NavButton label="About" />
       </Link>
-    </div>
+    </>
   );
 }

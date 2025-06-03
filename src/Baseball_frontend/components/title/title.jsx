@@ -10,10 +10,10 @@
 import "./title.scss";
 import "../../../fonts/RoosterPersonalUse-3z8d8.ttf";
 
-export default function Title() {
+export default function Title({ title }) {
   return (
-    <div className="title-text">
-      <h1>Baseball Team Lineups</h1>
+    <div className="title-text limit-min">
+      <span>{title}</span>
     </div>
   );
 }

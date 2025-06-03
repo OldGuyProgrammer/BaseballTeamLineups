@@ -1,7 +1,7 @@
 /*
 Baseball Roster and Team Organizer
 
-Title 
+Home screen styles
 
 Old Guy Programmer
 2025
@@ -9,8 +9,7 @@ Old Guy Programmer
 
 @import "../../src/globals.scss";
 
-.title-text {
-  color: $text-color;
-  font-family: Bosox-full;
-  font-size: 50rem;
+.main {
+  display: inline;
+  justify-content: center;
 }

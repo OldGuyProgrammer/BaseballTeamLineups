@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.6",
+    "papaparse": "^5.5.3",
     "react-bootstrap": "^2.10.10"
   }
 }

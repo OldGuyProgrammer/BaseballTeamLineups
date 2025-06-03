@@ -13,6 +13,7 @@ import "./forms.scss";
 import { Baseball_backend } from "../../../declarations/Baseball_backend";
 import { FormLabel } from "react-bootstrap";
 import SubmitButton from "../buttons/buttons";
+import Title from "../title/title";
 
 export default function AddPlayer() {
   const [playerName, setPlayerName] = useState("");
@@ -41,36 +42,38 @@ export default function AddPlayer() {
   }
 
   return (
-    <>
+    <div className="form-container">
       <form>
-        <h3>Add a New Player</h3>
-        <FormLabel htmlFor="playerName">Player Name</FormLabel>
-        <input
-          onChange={handleChange}
-          type="text"
-          placeholder="Player Name"
-          value={playerName}
-          name="playerName"
-          id="playerName"
-        />
-        <FormLabel htmlFor="curretTeam">Team</FormLabel>
-        <input
-          onChange={handleChange}
-          type="text"
-          placeholder="Team"
-          value={currentTeam}
-          name="curretTeam"
-        />
-        <FormLabel htmlFor="jerseyNumber">Jersey Number</FormLabel>
-        <input
-          onChange={handleChange}
-          type="text"
-          placeholder="Jersey Number"
-          value={jerseyNumber}
-          name="jerseyNumber"
-        />
+        <div className="form-group">
+          <Title title="Add a New Player" />
+          <FormLabel htmlFor="playerName">Player Name</FormLabel>
+          <input
+            onChange={handleChange}
+            type="text"
+            placeholder="Player Name"
+            value={playerName}
+            name="playerName"
+            id="playerName"
+          />
+          <FormLabel htmlFor="curretTeam">Team</FormLabel>
+          <input
+            onChange={handleChange}
+            type="text"
+            placeholder="Team"
+            value={currentTeam}
+            name="curretTeam"
+          />
+          <FormLabel htmlFor="jerseyNumber">Jersey Number</FormLabel>
+          <input
+            onChange={handleChange}
+            type="text"
+            placeholder="Jersey Number"
+            value={jerseyNumber}
+            name="jerseyNumber"
+          />
+        </div>
         <SubmitButton label={"Add Player"} handler={handleClick} />
       </form>
-    </>
+    </div>
   );
 }

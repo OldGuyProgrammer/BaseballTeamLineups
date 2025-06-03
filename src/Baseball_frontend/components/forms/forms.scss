@@ -9,12 +9,16 @@ Old Guy Programmer
 
 @import "../../src/globals.scss";
 
+.form-container {
+  text-align: center;
+}
+
 form {
-  display: grid;
+  display: inline-block;
+  background-color: lightblue;
   font-family: Bosox-full;
-  h3 {
-    font-size: 4rem;
-  }
+  width: 50vw;
+
   label {
     font-size: 3rem;
   }

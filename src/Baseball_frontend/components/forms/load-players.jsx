@@ -14,13 +14,16 @@ import { useState } from "react";
 import { FormLabel } from "react-bootstrap";
 import "./forms.scss";
 import SubmitButton from "../buttons/buttons";
+import Papa from "papaparse";
 
 export default function LoadPlayers() {
   function parseToJSON(file) {
-    Papa.parseToJSON(file, {
+    console.log(file);
+    Papa.parse("../../../src/Baseball", {
+      delimiter: ",",
       header: true,
       complete: function (results) {
-        console.log(JSON.stringify(SpeechRecognitionResultList.data, null, 2));
+        console.log(JSON.stringify(results));
       },
       error: function (error) {
         console.error("Error parsing CSV", error);
@@ -35,24 +38,22 @@ export default function LoadPlayers() {
   }
 
   function handleClick() {
-    console.log("grab file: " + fileName);
+    parseToJSON(fileName);
   }
 
   return (
-    <>
-      <form>
-        <p className="limit-min">Load Players From a .CSV file</p>
-        <FormLabel htmlFor="playerName">Player File Name</FormLabel>
-        <input
-          onChange={handleChange}
-          type="text"
-          placeholder="File Name"
-          value={fileName}
-          name="fileName"
-          id="fileName"
-        />
-        <SubmitButton label={"Select File"} handler={handleClick} />
-      </form>
-    </>
+    <form>
+      <p className="limit-min">Load Players From a .CSV file</p>
+      <FormLabel htmlFor="playerName">Player File Name</FormLabel>
+      <input
+        onChange={handleChange}
+        type="file"
+        placeholder="File Name"
+        value={fileName}
+        name="Choose File Name"
+        id="fileName"
+      />
+      <SubmitButton label={"Select File"} handler={handleClick} />
+    </form>
   );
 }

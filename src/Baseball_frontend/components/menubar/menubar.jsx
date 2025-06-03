@@ -19,10 +19,10 @@ export default function MenuBar() {
           <NavDropdown title="Players">
             <NavDropdown.Item href="/players">Player List</NavDropdown.Item>
             <NavDropdown.Item href="/addPlayer">Add Player</NavDropdown.Item>
+            <Nav.Link href="/loadplayers">Load-Players</Nav.Link>
           </NavDropdown>
           <Nav.Link href="/about">About</Nav.Link>
           <Nav.Link href="/ping">Ping-Server</Nav.Link>
-          <Nav.Link href="/loadplayers">Load-Players</Nav.Link>
         </Nav>
       </Navbar>
     </>

@@ -11,15 +11,23 @@
 // 2025
 
 import { useState } from "react";
-import { FormLabel } from "react-bootstrap";
+import { useFilePicker } from "use-file-picker";
+import { Button, FormLabel } from "react-bootstrap";
 import "./forms.scss";
 import SubmitButton from "../buttons/buttons";
 import Papa from "papaparse";
 
 export default function LoadPlayers() {
+  const { openFilePicker, filesContent, loading } = useFilePicker({
+    accept: "csv",
+  });
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
+  const [fileName, setFileName] = useState("");
   function parseToJSON(file) {
     console.log(file);
-    Papa.parse("../../../src/Baseball", {
+    Papa.parse(file, {
       delimiter: ",",
       header: true,
       complete: function (results) {
@@ -31,13 +39,8 @@ export default function LoadPlayers() {
     });
   }
 
-  const [fileName, setFileName] = useState("");
-
-  function handleChange(event) {
-    setFileName(event.target.value);
-  }
-
   function handleClick() {
+    console.log(fileName.content);
     parseToJSON(fileName);
   }
 
@@ -45,15 +48,10 @@ export default function LoadPlayers() {
     <form>
       <p className="limit-min">Load Players From a .CSV file</p>
       <FormLabel htmlFor="playerName">Player File Name</FormLabel>
-      <input
-        onChange={handleChange}
-        type="file"
-        placeholder="File Name"
-        value={fileName}
-        name="Choose File Name"
-        id="fileName"
-      />
-      <SubmitButton label={"Select File"} handler={handleClick} />
+      <Button onClick={() => openFilePicker()}>Select File of Players</Button>
+      {!fileName &&
+        filesContent.map((fileName, index) => setFileName(fileName))}
+      {fileName && <SubmitButton label={"Create CSV"} handler={handleClick} />}
     </form>
   );
 }

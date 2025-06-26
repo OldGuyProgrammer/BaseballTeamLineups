@@ -44,8 +44,9 @@ export default function AddPlayer() {
   return (
     <div className="form-container">
       <form>
-        <div className="form-group">
-          <Title title="Add a New Player" />
+        {/* <div className="form-group"> */}
+        <Title title="Add a New Player" />
+        <div>
           <FormLabel htmlFor="playerName">Player Name</FormLabel>
           <input
             onChange={handleChange}
@@ -55,6 +56,8 @@ export default function AddPlayer() {
             name="playerName"
             id="playerName"
           />
+        </div>
+        <div>
           <FormLabel htmlFor="curretTeam">Team</FormLabel>
           <input
             onChange={handleChange}
@@ -63,6 +66,8 @@ export default function AddPlayer() {
             value={currentTeam}
             name="curretTeam"
           />
+        </div>
+        <div>
           <FormLabel htmlFor="jerseyNumber">Jersey Number</FormLabel>
           <input
             onChange={handleChange}

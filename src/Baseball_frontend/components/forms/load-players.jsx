@@ -18,7 +18,7 @@ import SubmitButton from "../buttons/buttons";
 import Papa from "papaparse";
 
 export default function LoadPlayers() {
-  const [fileOfPlayers, setFileOfPlayers] = useState("");
+  const [fileOfPlayers, setFileOfPlayers] = useState(null);
   const { openFilePicker, playerCSV, loading } = useFilePicker({
     accept: "csv",
     onFilesSelected: ({ plainFiles, filesContent, errors }) =>
@@ -29,31 +29,19 @@ export default function LoadPlayers() {
   // const [playerList, setPlayerList] = useState([]);
 
   const handleParse = () => {
-    const reader = new FileReader();
-    reader.onload = async ({ target }) => {
-      const csv = Papa.parse(target.result, {
-        header: true,
-      });
-      const parsedData = csv?.data;
-      const rows = Object.keys(parsedData[0]);
-      const columns = Object.values(parsedData[0]);
-      const res = rows.reduce((acc, e, i) => {
-        return [...acc, [[e], columns[i]]];
-      }, []);
-      console.log(res);
-      setPlayerList(res);
-    };
-    reader.readAsText(fileOfPlayers);
+    console.log("Enter handleParse");
+
+    Papa.parse(fileOfPlayers, {
+      delimiter: ",",
+      download: true,
+      header: true,
+      complete: (results) => {
+        console.log(results);
+      },
+    });
+    console.log("Papa Parse complete");
   };
 
-  const handleFileChange = () => {
-    console.log(playerCSV);
-    setFileOfPlayers(playerCSV);
-  };
-
-  const handleClick = () => {
-    // parseToJSON(playerList);
-  };
   return (
     <div className="form-container">
       <form>
@@ -72,3 +60,25 @@ export default function LoadPlayers() {
     </div>
   );
 }
+
+// console.log("Enter handleParse");
+// const reader = new FileReader();
+// reader.onload = async (target) => {
+//   console.log("reader loaded");
+//   const csv = Papa.parse(target.result, {
+//     header: true,
+//   });
+//   console.log("Passed PapaParse");
+//   const parsedData = csv?.data;
+//   const rows = Object.keys(parsedData[0]);
+//   const columns = Object.values(parsedData[0]);
+//   const res = rows.reduce((acc, e, i) => {
+//     return [...acc, [[e], columns[i]]];
+//   }, []);
+//   console.log(res);
+//   inputFile;
+//   setPlayerList(res);
+// };
+// console.log("ReasAsText next: " + fileOfPlayers);
+// reader.readAsText(fileOfPlayers);
+// console.log("Read attempted.");

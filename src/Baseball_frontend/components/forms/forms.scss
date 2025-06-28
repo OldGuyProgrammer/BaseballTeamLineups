@@ -34,3 +34,11 @@ form {
     width: 300px;
   }
 }
+
+label {
+  width: 150px;
+  border-radius: 5px;
+  background-color: $card-background-color;
+  color: $card-text-color;
+  margin: auto;
+}

@@ -13,9 +13,10 @@
 import { useState } from "react";
 import { useFilePicker } from "use-file-picker";
 import { Button, FormLabel } from "react-bootstrap";
+import Papa from "papaparse";
 import "./forms.scss";
 import SubmitButton from "../buttons/buttons";
-import Papa from "papaparse";
+import Card from "../card/card";
 
 export default function LoadPlayers() {
   const [fileOfPlayers, setFileOfPlayers] = useState(null);
@@ -26,20 +27,23 @@ export default function LoadPlayers() {
       setFileOfPlayers(plainFiles[0].path),
   });
 
-  // const [playerList, setPlayerList] = useState([]);
+  const [playerList, setPlayerList] = useState([]);
 
   const handleParse = () => {
-    console.log("Enter handleParse");
+    // TODO
+    // Put error checking in.
+    // Check to see if user cancelled.
 
     Papa.parse(fileOfPlayers, {
       delimiter: ",",
       download: true,
       header: true,
       complete: (results) => {
-        console.log(results);
+        setPlayerList(results.data);
+        console.log(results.data);
+        console.log(playerList);
       },
     });
-    console.log("Papa Parse complete");
   };
 
   return (
@@ -53,32 +57,18 @@ export default function LoadPlayers() {
           </FormLabel>
         )}
         {fileOfPlayers && (
-          <SubmitButton label={"Create CSV"} handler={handleParse} />
+          <SubmitButton label={"Load Player List"} handler={handleParse} />
         )}
       </form>
-      {/* <div className="player-list"></div> */}
+      {playerList && (
+        <div className="player-list">
+          <p className="limit-min">New players from file.</p>
+          {playerList.map((player) => {
+            return <Card player={player} key={player.jerseyNumber} />;
+          })}
+        </div>
+      )}
+      );
     </div>
   );
 }
-
-// console.log("Enter handleParse");
-// const reader = new FileReader();
-// reader.onload = async (target) => {
-//   console.log("reader loaded");
-//   const csv = Papa.parse(target.result, {
-//     header: true,
-//   });
-//   console.log("Passed PapaParse");
-//   const parsedData = csv?.data;
-//   const rows = Object.keys(parsedData[0]);
-//   const columns = Object.values(parsedData[0]);
-//   const res = rows.reduce((acc, e, i) => {
-//     return [...acc, [[e], columns[i]]];
-//   }, []);
-//   console.log(res);
-//   inputFile;
-//   setPlayerList(res);
-// };
-// console.log("ReasAsText next: " + fileOfPlayers);
-// reader.readAsText(fileOfPlayers);
-// console.log("Read attempted.");

@@ -20,55 +20,54 @@ import Card from "../card/card";
 
 export default function LoadPlayers() {
   const [fileOfPlayers, setFileOfPlayers] = useState(null);
+  const [playerList, setPlayerList] = useState(null);
   const { openFilePicker, playerCSV, loading } = useFilePicker({
     accept: "csv",
-    onFilesSelected: ({ plainFiles, filesContent, errors }) =>
-      // console.log(plainFiles[0].path),
-      setFileOfPlayers(plainFiles[0].path),
+    onFilesSelected: ({ plainFiles, filesContent, errors }) => {
+      setFileOfPlayers(plainFiles[0].path);
+      setPlayerList(null);
+    },
   });
 
-  const [playerList, setPlayerList] = useState([]);
-
   const handleParse = () => {
-    // TODO
-    // Put error checking in.
-    // Check to see if user cancelled.
-
     Papa.parse(fileOfPlayers, {
       delimiter: ",",
       download: true,
       header: true,
       complete: (results) => {
         setPlayerList(results.data);
-        console.log(results.data);
-        console.log(playerList);
+      },
+      error: (errMsg) => {
+        alert("Parsing Error: " + errMsg.message);
       },
     });
   };
 
+  // TODO
+  // Copy code from player list screen that removes a player card.
+
   return (
     <div className="form-container">
+      <h1 className="display-1">Load Players From a .CSV file</h1>
       <form>
-        <p className="limit-min">Load Players From a .CSV file</p>
         <Button onClick={() => openFilePicker()}>Select File of Players</Button>
         {fileOfPlayers && (
-          <FormLabel htmlFor="playerName">
-            Player File Name: {fileOfPlayers}
-          </FormLabel>
+          <h1 className="display-2">Player File Name: {fileOfPlayers}</h1>
         )}
         {fileOfPlayers && (
           <SubmitButton label={"Load Player List"} handler={handleParse} />
         )}
       </form>
       {playerList && (
-        <div className="player-list">
-          <p className="limit-min">New players from file.</p>
-          {playerList.map((player) => {
-            return <Card player={player} key={player.jerseyNumber} />;
-          })}
-        </div>
+        <>
+          <h1 className="display-2">New players from file</h1>
+          <div className="player-list">
+            {playerList.map((player) => {
+              return <Card key={player.jerseyNumber} player={player} />;
+            })}
+          </div>
+        </>
       )}
-      );
     </div>
   );
 }

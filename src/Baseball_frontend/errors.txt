@@ -1,0 +1,5 @@
+playerName,playerTeam,jerseyNumber
+Mickey Mantle,Yankees,23
+Jackie Robinson,Dodgers,14
+Ernie Banks,Cubs,12
+Jim Landis,White Sox,27

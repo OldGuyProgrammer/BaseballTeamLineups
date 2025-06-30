@@ -22,7 +22,6 @@ actor Baseball {
     };
 
     playerList := List.push(newPlayer, playerList);
-    Debug.print(debug_show (playerList));
   };
 
   public func loadPLayers() {

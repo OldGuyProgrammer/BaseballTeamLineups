@@ -26,10 +26,26 @@ export default function PlayerList() {
     fetchPLayers();
   }, []);
 
+  const deletePlayer = (id) => {
+    console.log("Delete Player: " + id);
+    setPlayerList((prevPlayers) => {
+      return prevPlayers.filter((playerItem, index) => {
+        return index !== id;
+      });
+    });
+  };
+
   return (
     <div className="player-list">
-      {playerList.map((player) => {
-        return <Card player={player} key={player.jerseyNumber} />;
+      {playerList.map((player, index) => {
+        return (
+          <Card
+            key={index}
+            id={index}
+            player={player}
+            onDelete={deletePlayer}
+          />
+        );
       })}
     </div>
   );

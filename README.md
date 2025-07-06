@@ -1,9 +1,10 @@
 # Baseball
-## Get team rosters by scraping team web sites.
+## Display and Edit Your Team Rosters
 ## Written by: Old Guy Programmer
 ### Version 1.0, 2025
 ## Program Synopsys
 ## version 1.0
+#### Note that, at the time of writing, most browsers will not allow a rendom file to be used for security reasons. There is a danger of loadig up viruses and other malware. Files must reside in a folder local to the one where this web site is run.
 <p>This system is used to manage a database of teams and players, like Baseball Teams and thier players, keeping the database on Web 3 the Internet Computer.</p>
 <p>This version was written and tested using VSCode 1.100.2 on Ubuntu 24.
 04 Noble.</p>

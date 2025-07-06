@@ -28,18 +28,15 @@ form {
     background: $card-background-color;
     color: $card-text-color;
   }
-
-  input {
-    font-size: 3rem;
-    height: 50px;
-    width: 300px;
+  p li {
+    font-size: 20px;
+    text-align: left;
   }
-}
 
-label {
-  width: 150px;
-  border-radius: 5px;
-  background-color: $card-background-color;
-  color: $card-text-color;
-  margin: auto;
+  textarea {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 2em;
+    height: 600px;
+    width: 100%;
+  }
 }

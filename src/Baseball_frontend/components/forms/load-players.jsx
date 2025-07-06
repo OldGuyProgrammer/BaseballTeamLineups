@@ -11,28 +11,19 @@
 // 2025
 
 import { useState } from "react";
-import { useFilePicker } from "use-file-picker";
-import { Button, FormLabel } from "react-bootstrap";
-import Papa from "papaparse";
+import { usePapaParse } from "react-papaparse";
 import "./forms.scss";
 import SubmitButton from "../buttons/buttons";
 import Card from "../card/card";
 
 export default function LoadPlayers() {
-  const [fileOfPlayers, setFileOfPlayers] = useState(null);
+  const [playerText, setPlayerText] = useState("");
   const [playerList, setPlayerList] = useState(null);
-  const { openFilePicker, playerCSV, loading } = useFilePicker({
-    accept: "csv",
-    onFilesSelected: ({ plainFiles, filesContent, errors }) => {
-      setFileOfPlayers(plainFiles[0].path);
-      setPlayerList(null);
-    },
-  });
+  const { readString } = usePapaParse();
 
   const handleParse = () => {
-    Papa.parse(fileOfPlayers, {
+    readString(playerText, {
       delimiter: ",",
-      download: true,
       header: true,
       complete: (results) => {
         setPlayerList(results.data);
@@ -43,31 +34,44 @@ export default function LoadPlayers() {
     });
   };
 
+  const handleChange = (e) => {
+    setPlayerText(e.target.value);
+  };
   // TODO
   // Copy code from player list screen that removes a player card.
 
   return (
     <div className="form-container">
-      <h1 className="display-1">Load Players From a .CSV file</h1>
       <form>
-        <Button onClick={() => openFilePicker()}>Select File of Players</Button>
-        {fileOfPlayers && (
-          <h1 className="display-2">Player File Name: {fileOfPlayers}</h1>
-        )}
-        {fileOfPlayers && (
-          <SubmitButton label={"Load Player List"} handler={handleParse} />
-        )}
+        <h1 className="display-1">Load Players From a .CSV file</h1>
+        <p>
+          Enter a list of players, one on each line using the following format:
+        </p>
+        <strong>Name, Jersey Number, Team Name</strong>
+        <ul>
+          <li>The name can have any number of parts separated by a space.</li>
+          <li>
+            Jersey Numeber is he number the player will wear when playing for
+            this team.
+          </li>
+          <li>
+            Team name can have any number of parts like city and name separated
+            by a space, for example Toledo Mud Hens.
+          </li>
+          <li>
+            {" "}
+            Commas are not allowed other than to delineate between Player Name,
+            Jesey number and Team Name
+          </li>
+        </ul>
+        <textarea name="inputPlayerList" onChange={handleChange} />
+        {/* <h1 className="display-2">New players from file</h1> */}
+        <SubmitButton label={"Load Player List"} handler={handleParse} />
       </form>
-      {playerList && (
-        <>
-          <h1 className="display-2">New players from file</h1>
-          <div className="player-list">
-            {playerList.map((player) => {
-              return <Card key={player.jerseyNumber} player={player} />;
-            })}
-          </div>
-        </>
-      )}
+      {playerList &&
+        playerList.map((player) => {
+          return <Card key={player.jeseyNumber} player={player} />;
+        })}
     </div>
   );
 }

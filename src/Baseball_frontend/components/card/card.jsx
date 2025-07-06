@@ -8,6 +8,7 @@
 // 2025
 
 import "./card.scss";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export default function Card({ player, onDelete, id }) {
   const { playerName, jerseyNumber, playerTeam } = player;
@@ -17,7 +18,7 @@ export default function Card({ player, onDelete, id }) {
       <h2>{playerName}</h2>
       <h3>{playerTeam}</h3>
       <h3>{jerseyNumber}</h3>
-      <button onClick={() => onDelete(id)}>Delete</button>
+      <FaRegTrashAlt className="trashCan" onClick={() => onDelete(id)} />
     </div>
   );
 }

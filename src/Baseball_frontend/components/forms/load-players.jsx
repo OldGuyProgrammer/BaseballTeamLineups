@@ -12,6 +12,7 @@
 
 import { useState } from "react";
 import { usePapaParse } from "react-papaparse";
+import "./load-players.scss";
 import "./forms.scss";
 import SubmitButton from "../buttons/buttons";
 import Card from "../card/card";
@@ -37,8 +38,32 @@ export default function LoadPlayers() {
   const handleChange = (e) => {
     setPlayerText(e.target.value);
   };
-  // TODO
-  // Copy code from player list screen that removes a player card.
+
+  const deletePlayer = (id) => {
+    console.log("Delete Player: " + id);
+    setPlayerList((prevPlayers) => {
+      return prevPlayers.filter((playerItem, index) => {
+        return index !== id;
+      });
+    });
+  };
+
+  const displayPlayers = () => {
+    return playerList.map((player, index) => {
+      return (
+        <Card key={index} id={index} player={player} onDelete={deletePlayer} />
+      );
+    });
+  };
+
+  const displayTextArea = () => {
+    return (
+      <>
+        <textarea name="inputPlayerList" onChange={handleChange} />
+        <SubmitButton label={"Load Player List"} handler={handleParse} />
+      </>
+    );
+  };
 
   return (
     <div className="form-container">
@@ -64,14 +89,11 @@ export default function LoadPlayers() {
             Jesey number and Team Name
           </li>
         </ul>
-        <textarea name="inputPlayerList" onChange={handleChange} />
-        {/* <h1 className="display-2">New players from file</h1> */}
-        <SubmitButton label={"Load Player List"} handler={handleParse} />
+        {playerList ? () => {} : displayTextArea()}
       </form>
-      {playerList &&
-        playerList.map((player) => {
-          return <Card key={player.jeseyNumber} player={player} />;
-        })}
+      <div className="players-container">
+        {playerList ? displayPlayers() : () => {}}
+      </div>
     </div>
   );
 }

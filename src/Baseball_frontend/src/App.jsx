@@ -12,10 +12,10 @@ import Home from "../components/home/home";
 import About from "../components/about/about";
 import PlayerList from "../components/player-list/player-list";
 import Ping from "../components/ping/ping";
-import AddPlayer from "../components/forms/add-player";
+import AddPlayer from "../components/add-player/add-player";
+import LoadPlayers from "../components/load-players/load-players";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import LoadPlayers from "../components/forms/load-players";
 
 export default function App() {
   return (

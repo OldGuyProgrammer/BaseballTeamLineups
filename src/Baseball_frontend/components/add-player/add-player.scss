@@ -7,15 +7,11 @@ Old Guy Programmer
 2025
 */
 
-@import "../../src/globals.scss";
+@import "../styles/main.scss";
 
 .form-container {
-  text-align: center;
+  margin: 0 auto;
   font-family: Bosox-full;
-}
-
-form {
-  display: inline-grid;
   background-color: lightgray;
 
   width: 50vw;
@@ -27,10 +23,6 @@ form {
     font-size: 2.5rem;
     background: $card-background-color;
     color: $card-text-color;
-  }
-  p li {
-    font-size: 20px;
-    text-align: left;
   }
 
   textarea {

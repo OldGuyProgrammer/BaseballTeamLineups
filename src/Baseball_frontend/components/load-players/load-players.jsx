@@ -13,7 +13,6 @@
 import { useState } from "react";
 import { usePapaParse } from "react-papaparse";
 import "./load-players.scss";
-import "./forms.scss";
 import SubmitButton from "../buttons/buttons";
 import Card from "../card/card";
 
@@ -30,6 +29,7 @@ export default function LoadPlayers() {
         setPlayerList(results.data);
       },
       error: (errMsg) => {
+        console.log(errMsg.message);
         alert("Parsing Error: " + errMsg.message);
       },
     });
@@ -40,7 +40,6 @@ export default function LoadPlayers() {
   };
 
   const deletePlayer = (id) => {
-    console.log("Delete Player: " + id);
     setPlayerList((prevPlayers) => {
       return prevPlayers.filter((playerItem, index) => {
         return index !== id;
@@ -66,13 +65,14 @@ export default function LoadPlayers() {
   };
 
   return (
-    <div className="form-container">
-      <form>
-        <h1 className="display-1">Load Players From a .CSV file</h1>
-        <p>
+    <>
+      <div className="help-container">
+        <h1>
           Enter a list of players, one on each line using the following format:
+        </h1>
+        <p>
+          <strong>Name, Jersey Number, Team Name</strong>
         </p>
-        <strong>Name, Jersey Number, Team Name</strong>
         <ul>
           <li>The name can have any number of parts separated by a space.</li>
           <li>
@@ -89,11 +89,9 @@ export default function LoadPlayers() {
             Jesey number and Team Name
           </li>
         </ul>
-        {playerList ? () => {} : displayTextArea()}
-      </form>
-      <div className="players-container">
-        {playerList ? displayPlayers() : () => {}}
       </div>
-    </div>
+      <form>{!playerList && displayTextArea()}</form>
+      <div className="players-container">{playerList && displayPlayers()}</div>
+    </>
   );
 }

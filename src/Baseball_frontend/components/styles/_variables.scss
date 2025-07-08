@@ -1,0 +1,55 @@
+/*
+Baseball Roster and Team Organizer
+
+Fonts File
+
+Old Guy Programmer
+2025
+*/
+
+$text-color: rgb(51, 50, 50);
+$card-text-color: rgba(226, 195, 195, 0.801);
+$card-background-color: rgb(51, 50, 50);
+$border-radius-color: grey;
+
+@font-face {
+  font-family: "Rooster";
+  src: url("../../../fonts/RoosterPersonalUse-3z8d8.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Branball";
+  src: url("../../../fonts/BrannbollFPersonalUseOnly-8wvz.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bosox";
+  src: url("../../../fonts/Bosox-njB1.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bosox-full";
+  src: url("../../../fonts/BosoxFull-1ege.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bosox-outline";
+  src: url("../../../fonts/BosoxOutline-RBmo.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bosox-outline-heavy";
+  src: url("../../../fonts/BosoxOutlineHeavy-9WOy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}

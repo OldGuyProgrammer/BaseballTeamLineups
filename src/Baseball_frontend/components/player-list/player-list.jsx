@@ -27,7 +27,6 @@ export default function PlayerList() {
   }, []);
 
   const deletePlayer = (id) => {
-    console.log("Delete Player: " + id);
     setPlayerList((prevPlayers) => {
       return prevPlayers.filter((playerItem, index) => {
         return index !== id;

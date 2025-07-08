@@ -8,7 +8,7 @@
 //
 
 import { useState } from "react";
-import "./forms.scss";
+import "./add-player.scss";
 
 import { Baseball_backend } from "../../../declarations/Baseball_backend";
 import { FormLabel } from "react-bootstrap";
@@ -44,7 +44,6 @@ export default function AddPlayer() {
   return (
     <div className="form-container">
       <form>
-        {/* <div className="form-group"> */}
         <Title title="Add a New Player" />
         <div>
           <FormLabel htmlFor="playerName">Player Name</FormLabel>

@@ -1,0 +1,46 @@
+/*
+Baseball Roster and Team Organizer
+
+main scss file.
+To contain all partials
+
+Old Guy Programmer
+2025
+*/
+
+@import "variables";
+@import "mixins";
+
+.no-limits {
+  font-size: 3vw;
+}
+
+.limit-min {
+  @include responsive-font(7.5vw, 20px);
+}
+
+.limit-min-max {
+  @include responsive-font(3vw, 20px, 50px);
+}
+
+#greeting {
+  margin: 10px auto;
+  padding: 10px 60px;
+  border: 1px solid #222;
+}
+
+#greeting:empty {
+  display: none;
+}
+
+.browser-warning {
+  display: none;
+}
+
+body {
+  font-family: Bosox-full;
+  font-size: 20px;
+  background-image: url("1879710.jpg");
+  align-items: center;
+  text-align: center;
+}

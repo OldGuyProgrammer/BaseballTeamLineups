@@ -1,16 +1,11 @@
 /*
 Baseball Roster and Team Organizer
 
-Global Sass variables
+SASS Mixins
 
 Old Guy Programmer
 2025
 */
-
-$text-color: rgb(51, 50, 50);
-$card-text-color: rgba(226, 195, 195, 0.801);
-$card-background-color: rgb(51, 50, 50);
-$border-radius-color: grey;
 
 @mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
   $responsive-unitless: $responsive / ($responsive - $responsive + 1);
@@ -33,16 +28,4 @@ $border-radius-color: grey;
   }
 
   font-size: $responsive;
-}
-
-.no-limits {
-  font-size: 3vw;
-}
-
-.limit-min {
-  @include responsive-font(7.5vw, 20px);
-}
-
-.limit-min-max {
-  @include responsive-font(3vw, 20px, 50px);
 }

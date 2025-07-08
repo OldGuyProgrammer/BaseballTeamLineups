@@ -24,8 +24,7 @@ export default function Home() {
       setGreeting(greeting);
     });
     return false;
-  } // Baseball Roster and Team Organizer
-  //
+  }
 
   return (
     <>

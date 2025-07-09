@@ -39,6 +39,9 @@ export default function LoadPlayers() {
     setPlayerText(e.target.value);
   };
 
+  const handleSave = () => {
+    console.log("save clicked");
+  };
   const deletePlayer = (id) => {
     setPlayerList((prevPlayers) => {
       return prevPlayers.filter((playerItem, index) => {
@@ -57,10 +60,21 @@ export default function LoadPlayers() {
 
   const displayTextArea = () => {
     return (
-      <>
-        <textarea name="inputPlayerList" onChange={handleChange} />
-        <SubmitButton label={"Load Player List"} handler={handleParse} />
-      </>
+      <div className="player-list-area">
+        <div className="input-area">
+          <div>
+            <textarea name="inputPlayerList" onChange={handleChange} />
+          </div>
+          <div>
+            <SubmitButton
+              className="btn"
+              label={"Load Player List"}
+              handler={handleParse}
+            />
+          </div>
+          <div></div>
+        </div>
+      </div>
     );
   };
 
@@ -71,7 +85,10 @@ export default function LoadPlayers() {
           Enter a list of players, one on each line using the following format:
         </h1>
         <p>
-          <strong>Name, Jersey Number, Team Name</strong>
+          <strong>teamName, playerName, jerseyNumber</strong>
+          <br />
+          For this release, please use these column headers. In the future, you
+          will be able to specify your own.
         </p>
         <ul>
           <li>The name can have any number of parts separated by a space.</li>
@@ -84,14 +101,18 @@ export default function LoadPlayers() {
             by a space, for example Toledo Mud Hens.
           </li>
           <li>
-            {" "}
             Commas are not allowed other than to delineate between Player Name,
             Jesey number and Team Name
           </li>
         </ul>
       </div>
-      <form>{!playerList && displayTextArea()}</form>
+      {!playerList && displayTextArea()}
       <div className="players-container">{playerList && displayPlayers()}</div>
+      <SubmitButton
+        className="btn"
+        label={"Save Player List"}
+        handler={handleSave}
+      />
     </>
   );
 }

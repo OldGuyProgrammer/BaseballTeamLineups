@@ -27,3 +27,21 @@ Old Guy Programmer
     font-size: 1.5em;
   }
 }
+
+.player-list-area {
+  display: grid;
+  grid-template-rows: 2;
+  .input-area {
+    .btn {
+      font-size: 2.5rem;
+      background: $card-background-color;
+      color: $card-text-color;
+    }
+    textarea {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1em;
+      height: 50vh;
+      width: 50%;
+    }
+  }
+}

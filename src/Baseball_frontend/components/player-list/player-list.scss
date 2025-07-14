@@ -13,3 +13,7 @@ Old Guy Programmer
   display: flex;
   justify-content: flex-start;
 }
+
+.players-container {
+  @include players-container;
+}

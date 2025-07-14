@@ -35,7 +35,7 @@ export default function PlayerList() {
   };
 
   return (
-    <div className="player-list">
+    <div className="players-container">
       {playerList.map((player, index) => {
         return (
           <Card

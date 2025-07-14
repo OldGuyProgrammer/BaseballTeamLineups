@@ -14,11 +14,11 @@ actor Baseball {
 
   stable var playerList : List.List<Player> = List.nil<Player>();
 
-  public func savePlayer(name : Text, number : Text, team : Text) {
+  public func savePlayer(playerName : Text, jerseyNumber : Text, playerTeam : Text) {
     let newPlayer : Player = {
-      playerName = name;
-      jerseyNumber = number;
-      playerTeam = team;
+      playerName = playerName;
+      jerseyNumber = jerseyNumber;
+      playerTeam = playerTeam;
     };
 
     playerList := List.push(newPlayer, playerList);
@@ -34,6 +34,19 @@ actor Baseball {
     savePlayer("Jim Landis", "22", "White Sox");
   };
 
+  public func deleteAllPlayers() {
+    let emptyList : List.List<Player> = List.nil<Player>();
+    playerList := emptyList;
+  };
+
+  public func deletePlayer(jerseyNumber : Text) {
+
+    let index = 3;
+    let listFront = List.take(playerList, index);
+    let listBack = List.drop(playerList, index + 1);
+    playerList := List.append(listFront, listBack);
+  };
+
   public query func ping() : async Text {
     Debug.print("Baseball backend running.");
     "Baseball backend running";
@@ -46,7 +59,6 @@ actor Baseball {
   };
 
   public query func getPlayers() : async [Player] {
-    Debug.print("Get players called");
     List.toArray(playerList);
   };
 

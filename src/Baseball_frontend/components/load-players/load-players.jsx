@@ -1,9 +1,7 @@
 //
 // Baseball Roster and Team Organizer
 //
-// Load players from .CSV file.
-// Users can get a team roster in a spreadsheet format.
-//      Convert it to .CSV
+// Load players from .CSV data.
 //      Examine it.
 //      Load it to the ICP database
 //
@@ -15,6 +13,7 @@ import { usePapaParse } from "react-papaparse";
 import "./load-players.scss";
 import SubmitButton from "../buttons/buttons";
 import Card from "../card/card";
+import { Baseball_backend } from "../../../declarations/Baseball_backend";
 
 export default function LoadPlayers() {
   const [playerText, setPlayerText] = useState("");
@@ -40,8 +39,18 @@ export default function LoadPlayers() {
   };
 
   const handleSave = () => {
-    console.log("save clicked");
+    playerList.map((player) => {
+      console.log(
+        player.playerName + " " + player.playerTeam + " " + player.jerseyNumber
+      );
+      Baseball_backend.savePlayer(
+        player.playerName,
+        player.jerseyNumber,
+        player.playerTeam
+      );
+    });
   };
+
   const deletePlayer = (id) => {
     setPlayerList((prevPlayers) => {
       return prevPlayers.filter((playerItem, index) => {
@@ -107,12 +116,16 @@ export default function LoadPlayers() {
         </ul>
       </div>
       {!playerList && displayTextArea()}
-      <div className="players-container">{playerList && displayPlayers()}</div>
-      <SubmitButton
-        className="btn"
-        label={"Save Player List"}
-        handler={handleSave}
-      />
+      <div className="players-container">
+        {playerList && displayPlayers()}
+        {playerList && (
+          <SubmitButton
+            className="btn"
+            label={"Save Player List"}
+            handler={handleSave}
+          />
+        )}
+      </div>
     </>
   );
 }

@@ -7,6 +7,15 @@ Old Guy Programmer
 2025
 */
 
+@import "variables";
+
+@mixin players-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  text-align: center;
+  font-family: Bosox-full;
+}
+
 @mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
   $responsive-unitless: $responsive / ($responsive - $responsive + 1);
   $dimension: if(unit($responsive) == "vh", "height", "width");

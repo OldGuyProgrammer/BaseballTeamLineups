@@ -12,7 +12,7 @@ import { useState } from "react";
 import { usePapaParse } from "react-papaparse";
 import "./load-players.scss";
 import SubmitButton from "../buttons/buttons";
-import Card from "../card/card";
+import Card, { InlineCard } from "../card/card";
 import { Baseball_backend } from "../../../declarations/Baseball_backend";
 
 export default function LoadPlayers() {
@@ -62,7 +62,13 @@ export default function LoadPlayers() {
   const displayPlayers = () => {
     return playerList.map((player, index) => {
       return (
-        <Card key={index} id={index} player={player} onDelete={deletePlayer} />
+        // <Card key={index} id={index} player={player} onDelete={deletePlayer} />
+        <InlineCard
+          key={index}
+          id={index}
+          player={player}
+          onDelete={deletePlayer}
+        />
       );
     });
   };
@@ -116,8 +122,7 @@ export default function LoadPlayers() {
         </ul>
       </div>
       {!playerList && displayTextArea()}
-      <div className="players-container">
-        {playerList && displayPlayers()}
+      <div className="players-list">
         {playerList && (
           <SubmitButton
             className="btn"
@@ -125,6 +130,7 @@ export default function LoadPlayers() {
             handler={handleSave}
           />
         )}
+        {playerList && displayPlayers()}
       </div>
     </>
   );

@@ -15,7 +15,7 @@ import { FormLabel } from "react-bootstrap";
 import SubmitButton from "../buttons/buttons";
 import Title from "../title/title";
 
-export default function AddPlayer() {
+const AddPlayer = () => {
   const [playerName, setPlayerName] = useState("");
   const [currentTeam, setCurrentTeam] = useState("");
   const [jerseyNumber, setJerseyNumber] = useState("");
@@ -80,4 +80,5 @@ export default function AddPlayer() {
       </form>
     </div>
   );
-}
+};
+export default AddPlayer;

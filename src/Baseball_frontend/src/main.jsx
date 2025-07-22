@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { React, StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import "../components/styles/main.scss";
 import App from "./App";
 import MenuBar from "../components/menubar/menubar";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
     <MenuBar />
     <App />
-  </React.StrictMode>
+  </StrictMode>
 );

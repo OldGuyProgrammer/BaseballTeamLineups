@@ -9,8 +9,17 @@ Old Guy Programmer
 
 @import "../styles/main.scss";
 
-.players-container {
-  @include players-container;
+.players-list {
+  display: inline-block;
+  text-align: left;
+  font-family: Bosox-full;
+  border: 3px solid;
+  background-color: lightgrey;
+  height: 500px;
+  overflow: hidden scroll;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10;
 }
 
 .help-container {

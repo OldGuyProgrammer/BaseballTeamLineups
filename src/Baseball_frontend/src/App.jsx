@@ -17,7 +17,7 @@ import LoadPlayers from "../components/load-players/load-players";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function App() {
+const App = () => {
   return (
     <>
       <Router>
@@ -32,4 +32,6 @@ export default function App() {
       </Router>
     </>
   );
-}
+};
+
+export default App;

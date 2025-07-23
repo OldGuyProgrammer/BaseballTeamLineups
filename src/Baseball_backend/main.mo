@@ -40,7 +40,6 @@ actor Baseball {
   };
 
   public func deletePlayer(jerseyNumber : Text) {
-
     let index = 3;
     let listFront = List.take(playerList, index);
     let listBack = List.drop(playerList, index + 1);
@@ -54,12 +53,16 @@ actor Baseball {
 
   public query func filterPlayers(name : Text, number : Text, team : Text) : async [Player] {
     let filteredPlayers = List.filter<Player>(playerList, func p { Text.equal(p.jerseyNumber, number) });
-
     return List.toArray(filteredPlayers);
   };
 
-  public query func getPlayers() : async [Player] {
-    List.toArray(playerList);
+  public query func getPlayers(playerTeam : Text) : async [Player] {
+    let msg = "Players for " # playerTeam;
+    Debug.print(msg);
+    if (playerTeam == "") return List.toArray(playerList) else {
+      let filteredPlayers = List.filter<Player>(playerList, func p { Text.equal(p.playerTeam, playerTeam) });
+      List.toArray(filteredPlayers);
+    };
   };
 
 };

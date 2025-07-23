@@ -13,18 +13,15 @@ import { Baseball_backend } from "../../../declarations/Baseball_backend";
 
 import "./player-list.scss";
 import { useEffect, useState } from "react";
+import SubmitButton from "../buttons/buttons";
 
 export default function PlayerList() {
   const [playerList, setPlayerList] = useState([]);
 
   async function fetchPLayers() {
-    const players = await Baseball_backend.getPlayers();
+    const players = await Baseball_backend.getPlayers(teamName);
     setPlayerList(players);
   }
-
-  useEffect(() => {
-    fetchPLayers();
-  }, []);
 
   const deletePlayer = (id) => {
     setPlayerList((prevPlayers) => {
@@ -34,18 +31,33 @@ export default function PlayerList() {
     });
   };
 
+  const [teamName, setTeamName] = useState("");
+
   return (
-    <div className="players-container">
-      {playerList.map((player, index) => {
-        return (
-          <Card
-            key={index}
-            id={index}
-            player={player}
-            onDelete={deletePlayer}
-          />
-        );
-      })}
-    </div>
+    <>
+      <label>
+        <span>
+          Enter team to display, or leave blank to display every player:{" "}
+        </span>
+        <input
+          name="teamName"
+          type="text"
+          onChange={(e) => setTeamName(e.target.value)}
+        />
+      </label>
+      <SubmitButton label={"Get players"} handler={fetchPLayers} />
+      <div className="players-container">
+        {playerList.map((player, index) => {
+          return (
+            <Card
+              key={index}
+              id={index}
+              player={player}
+              onDelete={deletePlayer}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }
